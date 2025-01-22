@@ -1,11 +1,10 @@
 package com.iessanalberto.dam1.basicbankfx.screens;
 
+import com.iessanalberto.dam1.basicbankfx.navigation.Navigation;
+import com.iessanalberto.dam1.basicbankfx.services.LoginServices;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -36,6 +35,18 @@ public class LoginScreen {
         fila1.getChildren().addAll(lblUsuario,txtUsuario);
         fila2.getChildren().addAll(lblPassword,txtPassword);
         root.getChildren().addAll(fila1,fila2,btnConectar);
+        btnConectar.setOnAction(actionEvent -> {
+           if (LoginServices.isLogged(txtUsuario.getText(),txtPassword.getText())){
+               Navigation.navigate("MenuScreen");
+           } else {
+               Alert alert = new Alert(Alert.AlertType.INFORMATION);
+               alert.setHeaderText("Esto es el header");
+               alert.setTitle("Error en la conexión");
+               alert.setContentText("Esto es el texto de abajo");
+               alert.showAndWait();
+           }
+
+        });
     }
 
     public VBox getRoot() {
