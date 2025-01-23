@@ -32,8 +32,7 @@ public class Cliente {
         return saldo;
     }
 
-    //Login
-    public boolean login(String dni, String clave) {
-        return dni.equals(this.dni) && clave.equals(this.clave);
+    public String getClave() {
+        return clave;
     }
 }

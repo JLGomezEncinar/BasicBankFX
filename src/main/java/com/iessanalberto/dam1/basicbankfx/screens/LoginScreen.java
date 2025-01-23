@@ -19,6 +19,8 @@ public class LoginScreen {
     private Label lblPassword = new Label("Contraseña");
     private PasswordField txtPassword = new PasswordField();
     private Button btnConectar = new Button("Conectar");
+
+    LoginServices loginServices = new LoginServices();
     public LoginScreen(){
         //Configuramos los elementos del layout
         root.setPadding(new Insets(10));
@@ -36,7 +38,7 @@ public class LoginScreen {
         fila2.getChildren().addAll(lblPassword,txtPassword);
         root.getChildren().addAll(fila1,fila2,btnConectar);
         btnConectar.setOnAction(actionEvent -> {
-           if (LoginServices.isLogged(txtUsuario.getText(),txtPassword.getText())){
+           if (loginServices.isLogged(txtUsuario.getText(),txtPassword.getText())){
                Navigation.navigate("MenuScreen");
            } else {
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
