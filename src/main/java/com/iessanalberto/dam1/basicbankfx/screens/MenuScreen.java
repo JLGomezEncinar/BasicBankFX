@@ -1,5 +1,6 @@
 package com.iessanalberto.dam1.basicbankfx.screens;
 
+import com.iessanalberto.dam1.basicbankfx.models.Cliente;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,7 +14,7 @@ public class MenuScreen {
     private Button btnSacar = new Button("Sacar dinero");
     private Button btnConsultar= new Button("Consultar saldo");
     //Constructor
-    public MenuScreen() {
+    public MenuScreen(Cliente cliente) {
         //Configuramos los elementos del layout
         root.setPadding(new Insets(10));
         root.setSpacing(20);

@@ -1,5 +1,6 @@
 package com.iessanalberto.dam1.basicbankfx.screens;
 
+import com.iessanalberto.dam1.basicbankfx.models.Cliente;
 import com.iessanalberto.dam1.basicbankfx.navigation.Navigation;
 import com.iessanalberto.dam1.basicbankfx.services.LoginServices;
 import javafx.geometry.Insets;
@@ -7,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 public class LoginScreen {
     //Elementos del layout
@@ -38,8 +40,10 @@ public class LoginScreen {
         fila2.getChildren().addAll(lblPassword,txtPassword);
         root.getChildren().addAll(fila1,fila2,btnConectar);
         btnConectar.setOnAction(actionEvent -> {
-           if (loginServices.isLogged(txtUsuario.getText(),txtPassword.getText())){
-               Navigation.navigate("MenuScreen");
+            Pair<Boolean, Cliente> resultLogged = loginServices.isLogged(txtUsuario.getText(),txtPassword.getText());
+           if (resultLogged.getKey()){
+               Navigation.navigate("MenuScreen",
+                       resultLogged.getValue());
            } else {
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                alert.setHeaderText("Esto es el header");

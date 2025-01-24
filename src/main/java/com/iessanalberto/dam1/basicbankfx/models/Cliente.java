@@ -35,4 +35,12 @@ public class Cliente {
     public String getClave() {
         return clave;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
 }

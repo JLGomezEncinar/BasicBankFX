@@ -1,15 +1,17 @@
 package com.iessanalberto.dam1.basicbankfx.services;
 
+import com.iessanalberto.dam1.basicbankfx.models.Cliente;
 import com.iessanalberto.dam1.basicbankfx.repositories.ClientRepository;
+import javafx.util.Pair;
 
 public class LoginServices {
     private ClientRepository clientRepository = ClientRepository.getInstance();
-    public  boolean isLogged (String user, String password) {
+    public Pair<Boolean, Cliente> isLogged (String user, String password) {
+        Pair<Boolean, Cliente> resultLogged = new Pair<>(false, null);
 
-        boolean isClientLogged = false;
         if (!user.isEmpty() && !password.isEmpty()) {
-            isClientLogged = clientRepository.isLogged(user, password);
+            resultLogged = clientRepository.isLogged(user, password);
         }
-        return isClientLogged;
+        return resultLogged;
     }
 }
