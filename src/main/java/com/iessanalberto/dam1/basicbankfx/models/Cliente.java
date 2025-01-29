@@ -27,6 +27,10 @@ public class Cliente {
         return isDone;
     }
 
+    public float getSaldo() {
+        return saldo;
+    }
+
     // Consultar saldo
     public float consultarSaldo() {
         return saldo;
